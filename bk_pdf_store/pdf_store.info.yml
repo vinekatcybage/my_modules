@@ -1,0 +1,20 @@
+name: PDF Store
+type: module
+description: A module create PDF Storage with QR scan implementation for downloading PDF files. </br>PDF listing URL under <b>configuration -> web services</b>.
+version: 1.0
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:file
+  - drupal:text
+  - drupal:node
+  - drupal:menu_ui
+  - drupal:views_base_url
+# configure:
+#   - node.type.pdf_store
+#   - field.storage.node.field_pdf_file
+#   - field.storage.node.field_pdf_download_link
+#   - field.field.node.pdf_store.field_pdf_file
+#   - field.field.node.pdf_store.field_pdf_download_link
+#   - field.field.node.pdf_store.body
+hidden: false

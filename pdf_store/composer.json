@@ -1,0 +1,9 @@
+{
+    "name": "drupal/pdf_store",
+    "description": "Store to have PDFs and provide QR code to scan to download PDF",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/pdf_store",
+    "require": {
+        "drupal/core": "^8 || ^9 || ^10"
+    }
+}

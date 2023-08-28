@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Install, Update and Uninstall methods for the pdf store module;
+ */
+
+/**
+ * Implements hook_install();
+ */
+function pdf_store_install() { 
+	\Drupal::messenger()->addMessage(t('The PDF Store content type and its related fields are created successfully.'));
+}
+
+/**
+ * Implements hook_unistall().
+ */
+function pdf_store_uninstall() {
+	// Delete all nodes of given content type.
+  $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+  $nodes = $storage_handler->loadByProperties(['type' => 'pdf_store']);
+  if (!empty($nodes)) {
+  	$storage_handler->delete($nodes);
+  }
+  
+  // Delete content type.
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('pdf_store');
+  if (isset($content_type)) {
+  	$content_type->delete();
+  }
+  \Drupal::messenger()->addMessage(t('The PDF Store content type and its related data has been deleted successfully.'));
+}

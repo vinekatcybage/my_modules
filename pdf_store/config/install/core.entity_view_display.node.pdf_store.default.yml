@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pdf_store.body
+    - field.field.node.pdf_store.field_available_download
+    - field.field.node.pdf_store.field_pdf_file
+    - node.type.pdf_store
+  module:
+    - file
+    - text
+    - user
+id: node.pdf_store.default
+targetEntityType: node
+bundle: pdf_store
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_available_download:
+    type: boolean
+    label: hidden
+    settings:
+      format: unicode-yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_pdf_file:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  links: true

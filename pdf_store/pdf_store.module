@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ */
+use Drupal\views\ViewExecutable;
+
+/**
+* Implements hook_views_pre_render().
+*/
+function pdf_store_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'pdf_store_list')) {
+  	$view->element['#attached']['library'][] = 'pdf_store/pdf_store';
+  }
+}

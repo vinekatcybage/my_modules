@@ -1,0 +1,6 @@
+pdf_store.pdf_list:
+  path: '/admin/config/system/pdf_store/list'
+  defaults:
+    _title: ''
+  requirements:
+    _permission: 'administer pdf store'

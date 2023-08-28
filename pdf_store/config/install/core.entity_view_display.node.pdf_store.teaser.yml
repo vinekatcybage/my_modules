@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.pdf_store.body
+    - field.field.node.pdf_store.field_available_download
+    - field.field.node.pdf_store.field_pdf_file
+    - node.type.pdf_store
+  module:
+    - text
+    - user
+id: node.pdf_store.teaser
+targetEntityType: node
+bundle: pdf_store
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_available_download: true
+  field_pdf_file: true
+  langcode: true
