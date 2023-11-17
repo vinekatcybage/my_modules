@@ -11,7 +11,6 @@ dependencies:
     - node
     - text
     - user
-    - views_base_url
     - views_infinite_scroll
 id: pdf_store_list
 label: 'PDF Store List'
@@ -537,65 +536,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        base_url:
-          id: base_url
-          table: views
-          field: base_url
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: base_url
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          show_link: false
-          show_link_options:
-            link_path: ''
-            link_text: ''
-            link_class: ''
-            link_title: ''
-            link_rel: ''
-            link_fragment: ''
-            link_query: ''
-            link_target: ''
         filename:
           id: filename
           table: file_managed
@@ -858,8 +798,70 @@ display:
           label: Description
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ body }} '
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 200
+            word_boundary: false
+            ellipsis: true
+            more_link: true
+            more_link_text: 'read more'
+            more_link_path: '/node/{{ nid }}'
+            strip_tags: false
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: summary
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: Attachment
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<a href="{{ uri }}" class="button button--small">Download</a>'
             make_link: false
             path: ''
             absolute: false
@@ -879,69 +881,6 @@ display:
             ellipsis: true
             more_link: false
             more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: summary
-          type: text_summary_or_trimmed
-          settings:
-            trim_length: 200
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: custom
-          label: 'Download URL'
-          exclude: false
-          alter:
-            alter_text: true
-            text: '{{ base_url }}{{ uri }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 50
-            word_boundary: false
-            ellipsis: true
-            more_link: true
-            more_link_text: more
             more_link_path: ''
             strip_tags: false
             trim: false
@@ -967,60 +906,11 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: custom
-          label: Attachment
-          exclude: false
-          alter:
-            alter_text: true
-            text: '<a href="{{ nothing }}" class="button button--small">Download</a>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: false
-        nothing_2:
-          id: nothing_2
-          table: views
-          field: nothing
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: custom
           label: 'QR Code'
           exclude: false
           alter:
             alter_text: true
-            text: "<a href=\"#\" data-uri=\"{{ nothing }}\" data-id=\"{{ nid }}\" class=\"button button--danger button--small qr-code\">View</a>\r\n<div id=\"{{ nid }}\" class=\"view-qrcode\"></div>"
+            text: "<a href=\"#\" data-uri=\"{{ uri }}\" data-id=\"{{ nid }}\" class=\"button button--danger button--small qr-code\">View</a>\r\n<div id=\"{{ nid }}\" class=\"view-qrcode\"></div>"
             make_link: false
             path: ''
             absolute: false
@@ -1233,13 +1123,11 @@ display:
           default_row_class: true
           columns:
             nid: nid
-            base_url: base_url
             filename: filename
             uri: uri
             node_bulk_form: node_bulk_form
             title: title
             body: body
-            nothing: nothing
             nothing_1: nothing_1
             nothing_2: nothing_2
             field_available_download: field_available_download
@@ -1247,13 +1135,6 @@ display:
           default: title
           info:
             nid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            base_url:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1292,36 +1173,31 @@ display:
               align: views-align-left
               separator: ''
               empty_column: false
-              responsive: ''
-            nothing:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
+              responsive: priority-medium
             nothing_1:
               align: views-align-left
               separator: ''
               empty_column: false
-              responsive: ''
+              responsive: priority-medium
             nothing_2:
               align: views-align-left
               separator: ''
               empty_column: false
-              responsive: ''
+              responsive: priority-medium
             field_available_download:
               sortable: false
               default_sort_order: asc
               align: views-align-left
               separator: ''
               empty_column: false
-              responsive: ''
+              responsive: priority-medium
             status:
               sortable: true
               default_sort_order: desc
               align: views-align-left
               separator: ''
               empty_column: false
-              responsive: ''
+              responsive: priority-medium
           override: true
           sticky: true
           summary: ''
@@ -1368,7 +1244,6 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_available_download'
-
   pdf_block:
     id: pdf_block
     display_title: Block
@@ -1583,15 +1458,15 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ body }}'
             make_link: false
             path: ''
             absolute: false
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -1599,14 +1474,14 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
-            word_boundary: true
+            max_length: 100
+            word_boundary: false
             ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
+            more_link: true
+            more_link_text: 'read more'
+            more_link_path: '/node/{{ nid }}'
             strip_tags: false
-            trim: false
+            trim: true
             preserve_tags: ''
             html: false
           element_type: ''
@@ -1622,9 +1497,8 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: summary
-          type: text_summary_or_trimmed
-          settings:
-            trim_length: 200
+          type: text_default
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1647,7 +1521,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a href=\"#\" data-uri=\"{{ base_url }}{{ uri }}\" data-id=\"{{ nid }}\" class=\"button button--danger button--small qr-code\">Scan here</a>\r\n<div id=\"{{ nid }}\" class=\"view-qrcode\"></div>"
+            text: "<a href=\"#\" data-uri=\"{{ uri }}\" data-id=\"{{ nid }}\" class=\"button button--danger button--small qr-code\">Scan here</a>\r\n<div id=\"{{ nid }}\" class=\"view-qrcode\"></div>"
             make_link: false
             path: ''
             absolute: false
@@ -1777,16 +1651,11 @@ display:
         groups:
           1: AND
       style:
-        type: grid
+        type: default
         options:
           grouping: {  }
-          columns: 3
-          automatic_width: true
-          alignment: horizontal
-          row_class_custom: ''
-          row_class_default: true
-          col_class_custom: ''
-          col_class_default: true
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
         options: {  }

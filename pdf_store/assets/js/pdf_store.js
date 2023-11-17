@@ -9,8 +9,8 @@
 				let uri = jQuery(this).attr('data-uri');
 
 				const qrcode = new QRCode(id, {
-					text: uri,
-					// text: window.location.origin + uri, - If no views_base_uri present
+					// text: uri,
+					text: window.location.origin + uri,
 					width: 350,
 					height: 350,
 					colorDark : '#000',

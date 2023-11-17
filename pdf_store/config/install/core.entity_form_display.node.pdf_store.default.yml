@@ -103,6 +103,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  promote: true
+  promote: false
   sticky: true
   uid: true

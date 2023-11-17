@@ -12,8 +12,7 @@ description: ''
 required: false
 translatable: true
 default_value:
-  -
-    value: 1
+  - value: 1
 default_value_callback: ''
 settings:
   on_label: 'On'
