@@ -1,0 +1,104 @@
+version: '3'
+services:
+  mysqldb:
+    container_name: $MYSQL_NAME
+    image: mysql:latest
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=1073741824
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_USERNAME=$MYSQL_USERNAME
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    volumes:
+      - ./db-data:/var/lib/mysql
+ 
+  myadmin:
+    container_name: $MYADMIN_NAME
+    image: phpmyadmin:latest
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysqldb
+      - UPLOAD_LIMIT=2000M
+    links:
+      - $MYSQL_NAME
+    restart: always
+    depends_on:
+      - $MYSQL_NAME
+ 
+  d7:
+    container_name: $WEB_D7_NAME
+    build:
+      context: .
+      dockerfile: local.Dockerfile7
+    ports:
+      - "8082:80"
+    volumes:
+      - ./drupal7/web/:/var/www/html
+      - ./drupal7/vendor:/var/www/html/vendor
+      - ./drupal7/composer.json:/var/www/html/composer.json
+      - ./drupal7/composer.lock:/var/www/html/composer.lock
+    links:
+      - $MYSQL_NAME
+    depends_on:
+      - $MYSQL_NAME
+    environment:
+      - DRUPAL_DB_HOST=$DB_HOST
+      - DRUPAL_DB_NAME=$D7_DB_NAME
+      - DRUPAL_DB_USER=$DB_USER
+      - DRUPAL_DB_PASS=$DB_PASS
+      - DRUPAL_DB_DRIVER=$MYSQL_DRIVER
+      - DRUPAL_TRUSTED_HOST_PATTERNS=$TRUSTED_HOST_PATTERNS
+
+  d9:
+    container_name: $WEB_D9_NAME
+    build:
+      context: .
+      dockerfile: local.Dockerfile9
+    ports:
+      - "8083:80"
+    volumes:
+      - ./drupal9/web/:/var/www/html
+      - ./drupal9/vendor:/opt/drupal9/vendor
+      - ./drupal9/composer.json:/opt/drupal9/composer.json
+      - ./drupal9/composer.lock:/opt/drupal9/composer.lock
+    links:
+      - $MYSQL_NAME
+    depends_on:
+      - $MYSQL_NAME
+    environment:
+      - DRUPAL_DB_HOST=$DB_HOST
+      - DRUPAL_DB_NAME=$D9_DB_NAME
+      - DRUPAL_DB_USER=$DB_USER
+      - DRUPAL_DB_PASS=$DB_PASS
+      - DRUPAL_DB_DRIVER=$MYSQL_DRIVER
+      - DRUPAL_TRUSTED_HOST_PATTERNS=$TRUSTED_HOST_PATTERNS
+ 
+  d10:
+    container_name: $WEB_D10_NAME
+    build:
+      context: .
+      dockerfile: local.Dockerfile10
+    ports:
+      - "8084:80"
+    volumes:
+      - ./drupal10/web/:/var/www/html
+      - ./drupal10/vendor:/opt/drupal10/vendor
+      - ./drupal10/composer.json:/opt/drupal10/composer.json
+      - ./drupal10/composer.lock:/opt/drupal10/composer.lock
+    links:
+      - $MYSQL_NAME
+    depends_on:
+      - $MYSQL_NAME
+    environment:
+      - DRUPAL_DB_HOST=$DB_HOST
+      - DRUPAL_DB_NAME=$D10_DB_NAME
+      - DRUPAL_DB_USER=$DB_USER
+      - DRUPAL_DB_PASS=$DB_PASS
+      - DRUPAL_DB_DRIVER=$MYSQL_DRIVER
+      - DRUPAL_TRUSTED_HOST_PATTERNS=$TRUSTED_HOST_PATTERNS
+ 
+networks:
+  drupal:
+    name: drupal
