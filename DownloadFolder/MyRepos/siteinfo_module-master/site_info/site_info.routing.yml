@@ -1,0 +1,10 @@
+site_info.settings:
+  defaults:
+    _title: 'Site Info'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+
+        

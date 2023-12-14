@@ -1,0 +1,6 @@
+name: Site Info
+type: module
+description: This module allow to add an extra field to default site information form in cofigurtion.
+package: Site Info
+core: 8.x
+version: '1.0'

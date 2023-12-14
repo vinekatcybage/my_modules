@@ -1,0 +1,12 @@
+name: netFORUM SSO
+description: This module allow users to get SSO/log-in netFORUM eWeb via xWeb by it's API console.
+package: netFORUM
+type: module
+core_version_requirement: ^8 || ^9
+configure: netauth.settings
+hidden: false
+
+# Information added by Drupal.org packaging script on 2021-09-23
+version: '8.0.1'
+project: 'netauth'
+datestamp: 1632372423

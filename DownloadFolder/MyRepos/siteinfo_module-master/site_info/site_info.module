@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Author : Vinek T.;
+ * Description : Main file for module to alter the site information form in drupal config
+ * Date : 3rd August'2017;
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AnonymousUserSession;
+
+/**
+ * Implements hook_form_alter();
+ */
+function site_info_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+	if ($form_id = "system_site_information_settings") {
+		$config = \Drupal::config('site_info.settings');
+		$siteapikey = $config->get('siteapikey');
+
+		$form['site_information']['siteapikey'] = array(
+			'#type' => 'textfield',
+			'#title' => t('Site API Key'),
+			'#default_value' => $siteapikey['siteapikey'],
+		);
+		// $form['actions']['submit']['#value'] = 'Update Configuration';
+		// $form['actions']['submit']['#submit'][] = '_site_info_setting_submit';
+		
+		$form['actions']['submit'] = array( 
+			'#type' => 'submit', 
+			'#value' => t('Update Configuration'),
+			'#submit' => array('_site_info_setting_submit'),
+		);
+	}
+}
+
+/**
+ * Implements submit callback;
+ */
+function _site_info_setting_submit(array &$form, FormStateInterface $form_state) {
+	$config = \Drupal::config('system.site');
+
+	$site_name = $form_state->getValues('site_name');
+	$site_slogan = $form_state->getValues('site_slogan');
+	$site_mail = $form_state->getValues('site_mail');
+	$siteapikey = $form_state->getValues('siteapikey');
+	$site_frontpage = $form_state->getValues('site_frontpage');
+	$site_403 = $form_state->getValues('site_403');
+	$site_404 = $form_state->getValues('site_404');
+
+	$config->set('name', $site_name['site_name'])
+	->set('slogan', $site_slogan['site_slogan'])
+	->set('mail', $site_mail['site_mail'])
+	->set('siteapikey', $siteapikey['siteapikey'])
+	->save();
+	
+	drupal_set_message("Site Configuration & Site API Key saved successfully.");
+}
