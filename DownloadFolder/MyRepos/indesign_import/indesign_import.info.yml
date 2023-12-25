@@ -1,6 +1,0 @@
-name: InDesign Import
-type: module
-description: Import XML file to add article
-core: 8.x
-package: Custom
-type: module

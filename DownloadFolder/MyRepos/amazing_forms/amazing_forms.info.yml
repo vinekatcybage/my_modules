@@ -1,8 +1,0 @@
-name: Amazing forms
-type: module
-description: 'Demo for creating Drupal 8 forms.'
-package: Custom
-core: 8.x
-
-configure: amazing_forms.settings
-hidden: false

@@ -1,7 +1,0 @@
-salesforce_auth_css:
-  Version: 1.x
-  css:
-    theme:
-      css/global.css: {}
-  js:
-    js/custom.js: {}

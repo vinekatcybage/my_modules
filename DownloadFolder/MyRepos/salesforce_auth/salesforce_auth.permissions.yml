@@ -1,3 +1,0 @@
-administer netauth:
-    title: 'Administer Salesforce SSO'
-    description: 'Configure how Salesforce SSO performs.'

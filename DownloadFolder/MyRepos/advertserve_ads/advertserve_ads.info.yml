@@ -1,5 +1,0 @@
-name: AdvertServe Ads
-description: Display ads from the AdvertServe Ads provider.
-package: Custom
-core: 8.x
-type: module
